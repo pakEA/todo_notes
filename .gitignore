@@ -1,0 +1,3 @@
+venv
+.idea
+todonotes/db.sqlite3
