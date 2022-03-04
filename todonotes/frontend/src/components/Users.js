@@ -14,9 +14,6 @@ const UserItem = ({user}) => {
                 {user.last_name}
             </td>
             <td>
-                {user.birthday_year}
-            </td>
-            <td>
                 {user.email}
             </td>
         </tr>
@@ -35,9 +32,6 @@ const UsersList = ({users}) => {
             </th>
             <th>
                 Last name
-            </th>
-            <th>
-                Birthday year
             </th>
             <th>
                 Email
