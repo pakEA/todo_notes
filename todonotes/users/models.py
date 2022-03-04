@@ -8,5 +8,4 @@ class Users(models.Model):
     username = models.CharField(unique=True, max_length=64)
     first_name = models.CharField(max_length=64)
     last_name = models.CharField(max_length=64)
-    birthday_year = models.PositiveIntegerField(max_length=4)
     email = models.EmailField(unique=True)
