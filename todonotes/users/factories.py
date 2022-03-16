@@ -12,3 +12,4 @@ class UsersFactory(DjangoModelFactory):
     last_name = factory.Faker('last_name')
     position = factory.Faker('position')
     email = factory.Faker('email')
+    username = factory.Faker('username')
