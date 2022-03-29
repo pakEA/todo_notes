@@ -1,8 +1,8 @@
 from django.core.management.base import BaseCommand
 from django.db import transaction
 
-from users.factories import UsersFactory
 from users.models import Users
+from users.factories import UsersFactory
 
 NUM_USERS = 10
 
