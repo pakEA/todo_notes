@@ -1,40 +1,39 @@
-import React from 'react'
+import React from "react";
 
 
-const UserItem = ({user}) => {
+const ProjectItem = ({project}) => {
     return (
         <tr>
-            <td>{user.username}</td>
-            <td>{user.first_name}</td>
-            <td>{user.last_name}</td>
-            <td>{user.email}</td>
+            <td>{project.name}</td>
+            <td>{project.desc}</td>
+            <td>{project.users}</td>
         </tr>
     )
 }
 
 
-class UsersList extends React.Component {
+class ProjectList extends React.Component {
     constructor(props) {
         super(props);
         this.state = {
-            users: [],
+            projects: [],
             isLoaded: false
         }
     }
 
     componentDidMount() {
-        fetch('http://127.0.0.1:8000/api/users/')
+        fetch('http://127.0.0.1:8000/api/projects/')
             .then(response => response.json())
-            .then(json => {
+            .then((json) => {
                 this.setState({
                     isLoaded: true,
-                    users: json
+                    projects: json.results
                 })
             }).catch(error => console.log(error))
     }
 
     render() {
-        const {isLoaded, users} = this.state;
+        const {isLoaded, projects} = this.state;
         if(!isLoaded) {
             return <div>
                 <h1>Loading...</h1>
@@ -45,13 +44,12 @@ class UsersList extends React.Component {
             <table className={"table table-bordered table-hover"}>
                 <thead className={"table-light"}>
                     <tr>
-                        <th>Username</th>
-                        <th>First name</th>
-                        <th>Last name</th>
-                        <th>Email</th>
+                        <th>Project name</th>
+                        <th>Description</th>
+                        <th>Users</th>
                     </tr>
                 </thead>
-                {users.map((user) => <UserItem user={user}/>)}
+                {projects.map((project) => <ProjectItem project={project}/>)}
             </table>
         </div>
         )
@@ -59,4 +57,4 @@ class UsersList extends React.Component {
 }
 
 
-export default UsersList;
+export default ProjectList;
