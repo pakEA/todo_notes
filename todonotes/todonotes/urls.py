@@ -1,5 +1,6 @@
 from django.contrib import admin
 from django.urls import path, include, re_path
+from graphene_django.views import GraphQLView
 from rest_framework.routers import DefaultRouter
 from rest_framework.authtoken import views
 from rest_framework import permissions
@@ -39,4 +40,6 @@ urlpatterns = [
          name='schema_swagger_ui'),
     path('redoc/', schema_view.with_ui('redoc', cache_timeout=0),
          name='schema_redoc'),
+    # GraphQL
+    path('graphql/', GraphQLView.as_view(graphiql=True)),
 ]
