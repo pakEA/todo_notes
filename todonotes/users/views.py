@@ -1,10 +1,14 @@
-from rest_framework.mixins import UpdateModelMixin
-from rest_framework.viewsets import ReadOnlyModelViewSet
+from rest_framework.generics import ListCreateAPIView, RetrieveUpdateDestroyAPIView
 
 from .models import Users
-from .serializers import UserModelSerializer
+from .serializers import UserModelSerializer, UserModelSerializerWithStaff
 
 
-class UserModelViewSet(UpdateModelMixin, ReadOnlyModelViewSet):
+class UserModelViewSet(ListCreateAPIView, RetrieveUpdateDestroyAPIView):
     queryset = Users.objects.all()
     serializer_class = UserModelSerializer
+
+    def get_serializer_class(self):
+        if self.request.version == '2':
+            return UserModelSerializerWithStaff
+        return UserModelSerializer
