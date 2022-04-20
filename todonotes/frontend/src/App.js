@@ -174,7 +174,7 @@ class App extends React.Component {
                     <Switch>
                         <Route exact path="/" component={() => <UsersList users={this.state.users}/>}/>
 
-                        <Route exact path="/projects/create" component={() => <ProjectForm users={this.state.users}
+                        <Route exact path="/projects/create" component={() => <ProjectForm
                             createProject={(name, desc, href, users) => this.createProject(name, desc, href, users)}/>}/>
                         <Route exact path="/projects" component={() => <ProjectList
                             projects={this.state.projects} deleteProject={(id) => this.deleteProject(id)}/>}/>
